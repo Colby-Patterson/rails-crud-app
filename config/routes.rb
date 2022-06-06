@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   namespace :api do
 
+    #User routes
     get '/users', to: 'users#index'
     get '/users/:id', to: 'users#show'
 
@@ -13,5 +14,11 @@ Rails.application.routes.draw do
     put '/users/:id', to: 'users#update'
 
     delete '/users/:id', to: 'users#destroy'
+
+    #Song routes
+    get '/songs', to: 'songs#index'
+    get '/songs/:id', to: 'songs#show'
+
+    delete '/songs/:id', to: 'songs#destroy'
   end
 end

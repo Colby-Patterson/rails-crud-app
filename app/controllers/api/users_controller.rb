@@ -14,7 +14,7 @@ class Api::UsersController < ApplicationController
     if(user.save)
       render json: user
     else
-      render json: {errors: item.errors.full_messages}, status 422
+      # render json: {errors: item.errors.full_messages}, status 422
     end
   end
 
@@ -22,13 +22,14 @@ class Api::UsersController < ApplicationController
     if @user.update(user_params)
       render json: @user
     else
-      render json: {errors: item.errors.full_messages}, status 422
+      # render json: {errors: item.errors.full_messages}, status 422
     end
   end
 
   def destroy
     user = User.find(params[:id])
     user.destroy
+    render json: {message: 'User deleted'}
   end
 
   private
