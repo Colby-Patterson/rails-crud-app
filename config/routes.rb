@@ -9,5 +9,7 @@ Rails.application.routes.draw do
     get '/users/:id', to: 'users#show'
 
     post '/users', to: 'users#create'
+
+    delete '/users/:id', to: 'users#destroy'
   end
 end
