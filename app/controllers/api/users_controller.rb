@@ -14,7 +14,7 @@ class Api::UsersController < ApplicationController
     if(user.save)
       render json: user
     else
-      puts "Error"
+      render json: {errors: item.errors.full_messages}, status 422
     end
   end
 
@@ -22,7 +22,7 @@ class Api::UsersController < ApplicationController
     if @user.update(user_params)
       render json: @user
     else
-      puts "Error"
+      render json: {errors: item.errors.full_messages}, status 422
     end
   end
 
