@@ -1,4 +1,5 @@
 class Api::UsersController < ApplicationController
+  before_action :set_user, only: [:update]
   def index
     render json: User.all
   end
@@ -17,12 +18,24 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def update
+    if @user.update(user_params)
+      render json: @user
+    else
+      puts "Error"
+    end
+  end
+
   def destroy
     user = User.find(params[:id])
     user.destroy
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:username, :age)
